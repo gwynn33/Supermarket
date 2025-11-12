@@ -1,0 +1,110 @@
+{% extends "base/base.html" %}
+{% block css_file %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_bp.css') }}">
+{% endblock %}
+{% block icon %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
+{% block content %}
+  <!-- Video Background - Fixed path -->
+  <video autoplay muted loop playsinline id="video-background">
+    <!-- Try these different path options: -->
+    
+    <!-- Option 1: For Flask -->
+    <source src="media/vid1.mp4" type="video/mp4">
+
+  </video>
+
+  <div class="container">
+    <div class="left-panel">
+      <h1>Supermarket Management System</h1>
+      <p><strong>Inventory and Data Analysis Application</strong></p>
+      <p>Our platform combines real-time inventory management with advanced data analysis tools to optimize your supermarket operations.</p>
+
+      <div class="features">
+        <div class="feature-item">
+          <i class="fas fa-database"></i>
+          <div>
+            <strong>Comprehensive Inventory Management</strong>
+            <div class="feature-description">Real-time tracking of stock, sales, and orders</div>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-chart-line"></i>
+          <div>
+            <strong>Advanced Data Analysis</strong>
+            <div class="feature-description">Explore and analyze purchase data with predictive modeling</div>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <i class="fas fa-chart-bar"></i>
+          <div>
+            <strong>Interactive Visualization</strong>
+            <div class="feature-description">Dynamic dashboards with visualization of sales trends</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-stack">
+        <h3>Technologies Used:</h3>
+        <div class="tech-tags">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Flask</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">NumPy</span>
+          <span class="tech-tag">Seaborn</span>
+          <span class="tech-tag">Matplotlib</span>
+          <span class="tech-tag">Database</span>
+        </div>
+      </div>
+
+      <div class="footer">Developed by the HORM Team</div>
+    </div>
+
+    <div class="right-panel">
+      <div class="logo">
+        <i class="fas fa-shopping-cart"></i>
+        <h2>SuperMarket Analytics</h2>
+      </div>
+
+      <div class="form-container">
+        <div class="user-type-selector">
+          <div class="user-type active" data-type="user">Customer</div>
+          <div class="user-type" data-type="admin">Administrator</div>
+        </div>
+
+        <form id="loginForm">
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="email" name="Email" placeholder="Email" required>
+          </div>
+
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+
+          <div class="options">
+            <div class="remember">
+              <input type="checkbox" id="remember" name="remember">
+              <label for="remember">Remember me</label>
+            </div>
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn-login">Log In</button>
+        </form>
+
+        <div class="register-link">
+          <p>Don't have an account? <a href="{{url_for('signin_bp.signin')}}" id="registerLink">Sign up here</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/js/login_bp.js" ></script>
+{% endblock %}

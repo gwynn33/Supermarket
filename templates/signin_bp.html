@@ -1,0 +1,165 @@
+{% extends "base/base.html" %}
+{% block css_file %}
+    <link rel="stylesheet" href="/css/signin_bp.css">
+{% endblock %}
+{% block icon %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+    <video autoplay muted loop id="video-background">
+        <source src="/media/vid1.mp4" type="video/mp4">
+        Your browser does not support video playback.
+    </video>
+
+    <div class="container">
+        <div class="signup-form">
+            <div class="logo">
+                <i class="fas fa-user-plus"></i>
+                <h2>Create an Account</h2>
+            </div>
+            
+            <form id="signupForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="fullname" placeholder="Full Name" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-city"></i>
+                    <select id="city" name="cty" required>
+                        <option value="">Select your city</option>
+                        <option value="casablanca">Casablanca</option>
+                        <option value="rabat">Rabat</option>
+                        <option value="fes">Fès</option>
+                        <option value="marrakech">Marrakech</option>
+                        <option value="tanger">Tangier</option>
+                        <option value="meknes">Meknes</option>
+                        <option value="agadir">Agadir</option>
+                        <option value="oujda">Oujda</option>
+                        <option value="kenitra">Kenitra</option>
+                        <option value="tetouan">Tetouan</option>
+                        <option value="safi">Safi</option>
+                        <option value="mohammedia">Mohammédia</option>
+                        <option value="eljadida">El Jadida</option>
+                        <option value="beni-mellal">Béni Mellal</option>
+                        <option value="nador">Nador</option>
+                        <option value="taza">Taza</option>
+                        <option value="khouribga">Khouribga</option>
+                        <option value="settat">Settat</option>
+                        <option value="larache">Larache</option>
+                        <option value="ksar-el-kebir">Ksar El Kébir</option>
+                        <option value="guelmim">Guelmim</option>
+                        <option value="berrechid">Berrechid</option>
+                        <option value="taourirt">Taourirt</option>
+                        <option value="fnideq">Fnideq</option>
+                        <option value="sidi-slimane">Sidi Slimane</option>
+                        <option value="errachidia">Errachidia</option>
+                        <option value="ouarzazate">Ouarzazate</option>
+                        <option value="tiznit">Tiznit</option>
+                        <option value="sidi-kacem">Sidi Kacem</option>
+                        <option value="taroudant">Taroudant</option>
+                        <option value="youssoufia">Youssoufia</option>
+                        <option value="souk-el-arba">Souk El Arba</option>
+                        <option value="lahraouyine">Lahraouyine</option>
+                        <option value="benslimane">Benslimane</option>
+                        <option value="inezgane">Inezgane</option>
+                        <option value="ksar-es-seghir">Ksar Es Seghir</option>
+                        <option value="tiflet">Tiflet</option>
+                        <option value="sidi-bennour">Sidi Bennour</option>
+                        <option value="moulay-abdallah">Moulay Abdallah</option>
+                        <option value="midelt">Midelt</option>
+                        <option value="azrou">Azrou</option>
+                        <option value="jerada">Jerada</option>
+                        <option value="sefrou">Sefrou</option>
+                        <option value="bir-lehlou">Bir Lehlou</option>
+                        <option value="temsia">Temsia</option>
+                        <option value="sidi-ifni">Sidi Ifni</option>
+                        <option value="dakhla">Dakhla</option>
+                        <option value="boujdour">Boujdour</option>
+                        <option value="smara">Smara</option>
+                        <option value="laayoune">Laâyoune</option>
+                        <option value="assilah">Assilah</option>
+                        <option value="chefchaouen">Chefchaouen</option>
+                        <option value="al-hoceima">Al Hoceïma</option>
+                        <option value="tizgui">Tizgui</option>
+                        <option value="boulemane">Boulemane</option>
+                        <option value="figuig">Figuig</option>
+                        <option value="tata">Tata</option>
+                        <option value="tan-tan">Tan-Tan</option>
+                        <option value="sidi-bouzid">Sidi Bouzid</option>
+                        <option value="bir-anzaran">Bir Anzaran</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" name="phone_number" placeholder="Phone Number" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="Email" placeholder="Email Address" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-calendar"></i>
+                    <input type="date"  name="Date" placeholder="Date of Birth" required>
+                </div>
+                
+                <div class="gender-selection">
+                    <label>Gender:</label>
+                    <div class="gender-options">
+                        <label class="gender-option">
+                            <input type="radio" name="gender" value="male" required>
+                            <span class="gender-label">
+                                <i class="fas fa-mars"></i>
+                                Male
+                            </span>
+                        </label>
+                        <label class="gender-option">
+                            <input type="radio" name="gender" value="female" required>
+                            <span class="gender-label">
+                                <i class="fas fa-venus"></i>
+                                Female
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password"name="password" placeholder="Password" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="confirmed_password" placeholder="Confirm Password" required>
+                </div>
+                
+                <div class="terms">
+                    <input type="checkbox" name="terms1" id="terms" required>
+                    <label for="terms">I accept the <a href="#">terms of use</a> and the <a href="#">privacy policy</a></label>
+                </div>
+
+                <div class="terms">
+                    <input type="checkbox" name="terms2" id="newsletter">
+                    <label for="newsletter">I would like to receive the newsletter and promotional offers</label>
+                </div>
+                
+                <button type="submit" class="btn-signup">Sign Up</button>
+            </form>
+            
+            <div class="login-link">
+                <p>Already have an account? <a href=#>Log in here</a></p>
+            </div>
+            
+            <div class="footer">
+                Developed by the HORM team
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="/js/signin_bp.js"></script>
+{% endblock %}
