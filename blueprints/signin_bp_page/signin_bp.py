@@ -32,6 +32,9 @@ def signin():
             age = now.year - date_obj.year - (
             (now.month, now.day) < (date_obj.month, date_obj.day)
             )
+            
+            if age < 18: 
+                raise ValueError("Too Young Bro!")
 
             sign_up_date = datetime.now().strftime("%Y-%m-%d")
 

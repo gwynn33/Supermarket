@@ -19,6 +19,7 @@ try:
         user_sexe : Mapped[str] = mapped_column(String(10),nullable=False)
         user_age : Mapped[int]  = mapped_column(Integer,nullable=False)
         user_loyality: Mapped[bool] = mapped_column(Boolean,nullable=False)
+        user_ordering_count: Mapped[int] = mapped_column(Integer,nullable=True)
         
         def __repr__(self):
             return f"User: user_id : {self.user_id}"
@@ -29,6 +30,7 @@ try:
         user_id: Mapped[int] = mapped_column(Integer,primary_key=True,autoincrement=True)
         user_email: Mapped[str] = mapped_column(String(50),unique=True,nullable=False)
         user_password: Mapped[str] = mapped_column(String(256),nullable=False)
+        is_user : Mapped[bool] = mapped_column(Boolean,nullable=True)
     
         def set_password(self,password):
             self.user_password = generate_password_hash(password)
@@ -65,6 +67,7 @@ try:
         staff_id: Mapped[int] = mapped_column(Integer,primary_key=True)
         staff_email: Mapped[str] = mapped_column(String(50),unique=True,nullable=False)
         staff_password: Mapped[str] = mapped_column(String(256),nullable=False)
+        is_staff: Mapped[bool] = mapped_column(Boolean,nullable=True)
 
         def set_password(self,password):
             self.staff_password = generate_password_hash(password)
@@ -83,6 +86,7 @@ try:
     class Product(Base):
         __tablename__ = "product"
         product_id: Mapped[int] = mapped_column(Integer,primary_key=True)
+        product_name: Mapped[str] = mapped_column(String(50),nullable=False)
         product_categorie: Mapped[str] = mapped_column(String(50),nullable=False)
         product_price: Mapped[int] = mapped_column(Integer,nullable=False)
         current_stock_quantity: Mapped[int] = mapped_column(Integer)

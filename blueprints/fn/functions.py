@@ -1,6 +1,6 @@
 from flask import Blueprint
 from sqlalchemy import select
-from blueprints.database.models import Staff,User_account
+from blueprints.database.models import Staff,User_account,User
 from blueprints.database import get_session  
 
 
@@ -49,3 +49,5 @@ def parsed_gmail(text):
 def parse_date(text):
     text = text.split("-")
     return text[0]
+
+

@@ -24,211 +24,142 @@
             <div class="nav-section">
                 <h3 class="nav-title">Data Analysis 2025</h3>
                 <ul class="nav-links">
-                    <li><a href="#" class="nav-link active" data-page="dashboard">Dashboard</a></li>
-                    <li><a href="#" class="nav-link" data-page="ventes">Sales Analysis</a></li>
-                    <li><a href="#" class="nav-link" data-page="produits">Product Performance</a></li>
-                    <li><a href="#" class="nav-link" data-page="clients">Customer Analysis</a></li>
-                    <li><a href="#" class="nav-link" data-page="inventaire">Inventory Management</a></li>
-                </ul>
-            </div>
-
-            <div class="nav-section">
-                <h3 class="nav-title">Financial Reports 2025</h3>
-                <ul class="nav-links">
-                    <li><a href="#" class="nav-link" data-page="revenus">Revenue and Profits</a></li>
-                    <li><a href="#" class="nav-link" data-page="tendances">Market Trends</a></li>
-                    <li><a href="#" class="nav-link" data-page="projections">Future Projections</a></li>
+                    <li><a href="#" class="nav-link active" data-page="sort-products">Sort the products by price or stock</a></li>
+                    <li><a href="#" class="nav-link" data-page="stock-value">Total Stock Value</a></li>
+                    <li><a href="#" class="nav-link" data-page="category-chart">Category Analysis</a></li>
+                    <li><a href="{{url_for('logout_bp.logout')}}">Logout</a></li>
                 </ul>
             </div>
         </div>
 
         <!-- Main content -->
         <div class="main-content">
-            <!-- Dashboard -->
-            <div class="page active" id="dashboard">
-                <h2 class="page-title">Dashboard <span class="year-indicator">2025</span></h2>
+            
+            <!-- PAGE 1: Sort Products -->
+            <div class="page active" id="sort-products">
+                <h2 class="page-title">Sort Products <span class="year-indicator">2025</span></h2>
+                <p style="color: #666; margin-bottom: 20px;">Data processed with Pandas & NumPy</p>
+    
+                <div class="chart-container">
+                    <h3 class="chart-title">Sort the products by price</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: black; margin-top: 20px;">
+                            <thead>
+                                <tr style="background: gray; color: whitesmoke;">
+                                    <th style="padding: 12px; text-align: left;">#</th>
+                                    <th style="padding: 12px; text-align: left;">Product</th>
+                                    <th style="padding: 12px; text-align: left;">Category</th>
+                                    <th style="padding: 12px; text-align: left;">Price (DH)</th>
+                                    <th style="padding: 12px; text-align: left;">Stock</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products_by_price %}
+                                <tr style="border-bottom: 1px solid #ddd;">
+                                    <td style="padding: 12px;">{{ loop.index }}</td>
+                                    <td style="padding: 12px; font-weight: bold;">{{ product.product_name }}</td>
+                                    <td style="padding: 12px;">{{ product.product_categorie }}</td>
+                                    <td style="padding: 12px; color: #4CAF50; font-weight: bold;">{{ product.product_price }} DH</td>
+                                    <td style="padding: 12px;">{{ product.current_stock_quantity }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 40px;">
+                    <h3 class="chart-title">Sort the products by stock</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: black; margin-top: 20px;">
+                            <thead>
+                                <tr style="background: gray; color: white;">
+                                    <th style="padding: 12px; text-align: left;">#</th>
+                                    <th style="padding: 12px; text-align: left;">Product</th>
+                                    <th style="padding: 12px; text-align: left;">Category</th>
+                                    <th style="padding: 12px; text-align: left;">Stock</th>
+                                    <th style="padding: 12px; text-align: left;">Price (DH)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products_by_stock %}
+                                <tr style="border-bottom: 1px solid #ddd;">
+                                    <td style="padding: 12px;">{{ loop.index }}</td>
+                                    <td style="padding: 12px; font-weight: bold;">{{ product.product_name }}</td>
+                                    <td style="padding: 12px;">{{ product.product_categorie }}</td>
+                                    <td style="padding: 12px; color: #2196F3; font-weight: bold;">{{ product.current_stock_quantity }} units</td>
+                                    <td style="padding: 12px;">{{ product.product_price }} DH</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 2: Total Stock Value -->
+            <div class="page" id="stock-value">
+                <h2 class="page-title">Total Stock Value <span class="year-indicator">2025</span></h2>
+                <p style="color: #666; margin-bottom: 20px;">Calculated using NumPy aggregations</p>
                 
-                <div class="data-cards">
-                    <div class="data-card">
-                        <div class="data-label">Total Revenue 2025</div>
-                        <div class="data-value">892,450 MAD</div>
-                        <div class="data-label">January - March 2025</div>
-                    </div>
-                    <div class="data-card">
-                        <div class="data-label">Orders 2025</div>
-                        <div class="data-value">4,512</div>
-                        <div class="data-label">+18% vs 2024</div>
-                    </div>
-                    <div class="data-card">
-                        <div class="data-label">Active Customers 2025</div>
-                        <div class="data-value">3,247</div>
-                        <div class="data-label">New: 487</div>
-                    </div>
-                    <div class="data-card">
-                        <div class="data-label">Average Cart 2025</div>
-                        <div class="data-value">215 MAD</div>
-                        <div class="data-label">+8.7% vs 2024</div>
+                <div class="chart-container">
+                    <div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #313236 0%, #b9b5bd 100%); border-radius: 10px; color: white; margin-bottom: 30px;">
+                        <div style="font-size: 18px; opacity: 0.9; margin-bottom: 10px;">TOTAL INVENTORY VALUE</div>
+                        <div style="font-size: 64px; font-weight: bold; margin: 20px 0;">{{ "%.2f"|format(total_stock_value) }} DH</div>
+                        <div style="font-size: 16px; opacity: 0.8;">{{ products_with_value|length }} products analyzed</div>
                     </div>
                 </div>
 
                 <div class="chart-container">
-                    <h3 class="chart-title">Sales Performance 2025 - First 3 Months</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Sales Evolution January-March 2025
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <h3 class="chart-title">Top 5 Product Categories 2025</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Category Distribution 2025
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <h3 class="chart-title">2025 Goals vs Achievement</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Goals vs Performance Comparison 2025
+                    <h3 class="chart-title">Detailed Breakdown</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: black; margin-top: 20px;">
+                            <thead>
+                                <tr style="background: gray; color: white;">
+                                    <th style="padding: 12px; text-align: left;">Product</th>
+                                    <th style="padding: 12px; text-align: left;">Category</th>
+                                    <th style="padding: 12px; text-align: center;">Price</th>
+                                    <th style="padding: 12px; text-align: center;">Stock</th>
+                                    <th style="padding: 12px; text-align: center;">Total Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in products_with_value %}
+                                <tr style="border-bottom: 1px solid #ddd;">
+                                    <td style="padding: 12px; font-weight: bold;">{{ product.product_name }}</td>
+                                    <td style="padding: 12px;">{{ product.product_categorie }}</td>
+                                    <td style="padding: 12px; text-align: center;">{{ product.product_price }} DH</td>
+                                    <td style="padding: 12px; text-align: center;">{{ product.current_stock_quantity }}</td>
+                                    <td style="padding: 12px; text-align: center; font-weight: bold; color: #9C27B0;">
+                                        {{ "%.2f"|format(product.total_value) }} DH
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
-            <!-- Sales analysis -->
-            <div class="page" id="ventes">
-                <h2 class="page-title">Sales Analysis <span class="year-indicator">2025</span></h2>
+            <!-- PAGE 3: Category Charts -->
+            <div class="page" id="category-chart">
+                <h2 class="page-title">Stock by Category <span class="year-indicator">2025</span></h2>
+                <p style="color: #666; margin-bottom: 20px;">Data visualized by Chartjs</p>
                 
-                <div class="data-cards">
-                    <div class="data-card">
-                        <div class="data-label">Daily Sales</div>
-                        <div class="data-value">12,680 MAD</div>
-                        <div class="data-label">March 15, 2025 - 58 orders</div>
-                    </div>
-                    <div class="data-card">
-                        <div class="data-label">Weekly Sales</div>
-                        <div class="data-value">84,250 MAD</div>
-                        <div class="data-label">March 9-15, 2025 (+9.2%)</div>
-                    </div>
-                    <div class="data-card">
-                        <div class="data-label">Monthly Sales</div>
-                        <div class="data-value">312,890 MAD</div>
-                        <div class="data-label">March 2025 - Goal: 300,000 MAD</div>
-                    </div>
-                    <div class="data-card">
-                        <div class="data-label">Quarterly Sales</div>
-                        <div class="data-value">892,450 MAD</div>
-                        <div class="data-label">Q1 2025 - Goal: 850,000 MAD</div>
-                    </div>
-                </div>
-
                 <div class="chart-container">
-                    <h3 class="chart-title">2025 Sales Evolution by Month</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: January-March 2025 Sales with Forecasts
-                    </div>
+                    <h3 class="chart-title">Bar Chart</h3>
+                    <canvas id="barChart" style="max-height: 400px; margin-top: 20px;"></canvas>
                 </div>
 
-                <div class="chart-container">
-                    <h3 class="chart-title">Sales by Channel 2025</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Online vs In-Store Distribution 2025
-                    </div>
-                </div>
-            </div>
+                <!-- <div class="chart-container" style="margin-top: 40px;">
+                    <h3 class="chart-title">🥧 Pie Chart</h3>
+                    <canvas id="pieChart" style="max-height: 400px; margin-top: 20px;"></canvas>
+                </div> -->
 
-            <!-- Product performance -->
-            <div class="page" id="produits">
-                <h2 class="page-title">Product Performance <span class="year-indicator">2025</span></h2>
-                
-                <div class="data-cards">
-                    <div class="data-card">
-                        <div class="data-label">Products Sold 2025</div>
-                        <div class="data-value">18,745</div>
-                        <div class="data-label">January-March 2025</div>
-                    </div>
-                    <div class="data-card">
-                        <div class="data-label">Top Product 2025</div>
-                        <div class="data-value">Premium Olive Oil</div>
-                        <div class="data-label">3,458 units</div>
-                    </div>
-                    <div class="data-card">
-                        <div class="data-label">Average Margin 2025</div>
-                        <div class="data-value">35.2%</div>
-                        <div class="data-label">+3.7% vs 2024</div>
-                    </div>
-                    <div class="data-card">
-                        <div class="data-label">New Products</div>
-                        <div class="data-value">47</div>
-                        <div class="data-label">Launched in 2025</div>
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <h3 class="chart-title">Top 10 Products 2025 by Sales</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Bar Chart of Best-Selling Products 2025
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <h3 class="chart-title">Performance by Category 2025</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Pie Chart of Categories 2025
-                    </div>
-                </div>
-            </div>
-
-            <!-- Customer analysis -->
-            <div class="page" id="clients">
-                <h2 class="page-title">Customer Analysis <span class="year-indicator">2025</span></h2>
-                <div class="chart-container">
-                    <h3 class="chart-title">Customer Data 2025</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Demographic and Behavioral Analysis 2025
-                    </div>
-                </div>
-            </div>
-
-            <!-- Inventory management -->
-            <div class="page" id="inventaire">
-                <h2 class="page-title">Inventory Management <span class="year-indicator">2025</span></h2>
-                <div class="chart-container">
-                    <h3 class="chart-title">Stock Levels 2025</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Stock Status and Turnover 2025
-                    </div>
-                </div>
-            </div>
-
-            <!-- Revenue and profits -->
-            <div class="page" id="revenus">
-                <h2 class="page-title">Revenue and Profits <span class="year-indicator">2025</span></h2>
-                <div class="chart-container">
-                    <h3 class="chart-title">Revenue Analysis 2025</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Revenue and Margin Evolution 2025
-                    </div>
-                </div>
-            </div>
-
-            <!-- Market trends -->
-            <div class="page" id="tendances">
-                <h2 class="page-title">Market Trends <span class="year-indicator">2025</span></h2>
-                <div class="chart-container">
-                    <h3 class="chart-title">Trend Analysis 2025</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Seasonal Trends and Forecasts 2025
-                    </div>
-                </div>
-            </div>
-
-            <!-- Future projections -->
-            <div class="page" id="projections">
-                <h2 class="page-title">Future Projections <span class="year-indicator">2025-2026</span></h2>
-                <div class="chart-container">
-                    <h3 class="chart-title">Sales Projections 2025-2026</h3>
-                    <div class="chart-placeholder">
-                        Matplotlib Chart: Forecasts Based on 2023-2025 Data
-                    </div>
+                <!-- OPTIONNEL: Container pour matplotlib -->
+                <div class="chart-container" style="margin-top: 40px; display: none;">
+                    <h3 class="chart-title">📈 Matplotlib Generated Chart</h3>
+                    <div id="matplotlib-container"></div>
                 </div>
             </div>
 
@@ -237,5 +168,9 @@
             </footer>
         </div>
     </div>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Ton JS externe -->
     <script type="module" src="/js/staff_bp.js"></script>
 {% endblock %}

@@ -1,12 +1,12 @@
 from flask import Flask,session
 from blueprints.main_bp_page.main_bp import main_bp
-from blueprints.login_bp_page.login_bp import login_bp
+from blueprints.login_bp_page.login_bp import login_bp,logout_bp
 from blueprints.signin_bp_page.signin_bp import signin_bp
 from blueprints.cli_commands.recreate_all import recreate_bp
 from blueprints.cli_commands.crud_operations import crud_bp
 from blueprints.staff_bp_page.staff_bp import staff_bp
 from blueprints.market_bp_page.market_bp import market_bp
-# from blueprints.login_bp_page.logout_bp import logout_bp
+from blueprints.cli_commands.add_bulky_data import add_data_bp
 from flask_login import LoginManager
 from blueprints.database.models import User_account,Staff
 from blueprints.fn.functions import StaffIID,UserID
@@ -19,6 +19,7 @@ def create_app():
     """Blueprints Registration For Routes"""
     app.register_blueprint(main_bp)
     app.register_blueprint(login_bp)
+    app.register_blueprint(logout_bp)
     app.register_blueprint(signin_bp)
     app.register_blueprint(staff_bp)
     app.register_blueprint(market_bp)
@@ -26,6 +27,7 @@ def create_app():
     """Blueprints Registration For Cli Commands"""
     app.register_blueprint(recreate_bp)
     app.register_blueprint(crud_bp)
+    app.register_blueprint(add_data_bp)
 
     """flask-login & connecting it with Flask"""
     #Creating the LoginManager instance

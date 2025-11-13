@@ -6,6 +6,7 @@ from flask import render_template,request,Blueprint,jsonify,redirect,url_for,ses
 import traceback
 
 login_bp = Blueprint('login_bp',__name__)
+logout_bp = Blueprint('logout_bp',__name__)
 
 @login_bp.route('/login',methods=['GET','POST'])
 def login():
@@ -52,3 +53,8 @@ def login():
             print("==========Detailled Error=========")
             traceback.print_exc()
             return jsonify({"success":False,"error":f"Something Wrong : {e}"}),401
+
+@logout_bp.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('main_bp.main'))
