@@ -107,9 +107,9 @@
                     </a>
                     
                     <div class="user-info-compact" id="user-menu-toggle">
-                        <div class="user-avatar-small">KA</div>
+                        <div class="user-avatar-small"></div>
                         <div class="user-details">
-                            <div class="user-name">Karim Alami</div>
+                            <div class="user-name">{{ username }}</div>
                             <div class="user-role">Client</div>
                         </div>
                     </div>
@@ -149,7 +149,23 @@
                 </div>
 
                 <div class="products-grid" id="products-container">
-                    <!-- Les produits seront chargés ici dynamiquement -->
+                    <div class="product-card">
+                    <div class="product-image"><img src=""></div>
+                    <div class="product-name">x</div>
+                    <div class="product-description">y</div>
+                    <div class="product-price">0 MAD</div>
+                    <div class="product-stock">10</div>
+                    <div class="product-actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus" data-id="${product.product_id}">-</button>
+                            <input type="text" class="quantity-input" value="1" data-id="${product.product_id}">
+                            <button class="quantity-btn plus" data-id="${product.product_id}">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" data-id="${product.product_id}" ${product.current_stock_quantity === 0 ? 'disabled' : ''}>
+                            ${product.current_stock_quantity === 0 ? 'Rupture' : 'Ajouter'}
+                        </button>
+                    </div>
+                    </div>
                 </div>
             </div>
 
